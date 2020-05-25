@@ -12,6 +12,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <app.main.class>ru.datana.demo.license.MainApp</app.main.class>
     </properties>
 
     <build>
@@ -21,6 +22,15 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>ru.datana.demo.license.MainApp</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
 
             <plugin>
@@ -37,12 +47,11 @@
                 </executions>
                 <configuration>
                     <keystore>/home/lin/apps/bin-gen-ssl-keys/keystore-client-license.jks</keystore>
-                    <!--                    <alias>1222</alias>-->
                     <alias>DatanaLicense</alias>
                     <storepass>12345678</storepass>
-                    <!--                    <keypass>12345678</keypass>-->
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 </project>
