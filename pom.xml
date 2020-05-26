@@ -35,10 +35,31 @@
                     <outjar>${project.build.finalName}-small.jar</outjar>
                     <outputDirectory>${project.build.directory}</outputDirectory>
                     <proguardInclude>${basedir}/proguard.conf</proguardInclude>
-                    <libs>
-                        <lib>${java.home}/lib/*.jar</lib>
-                    </libs>
+                    <includeDependency>false</includeDependency>
+
+                    <options>
+                        <option>-dontwarn org.**</option>
+                        <option>-dontwarn java.**</option>
+                        <option>-dontwarn javax.**</option>
+                        <option>-keepdirectories org.**</option>
+                        <option>-keepdirectories java.**</option>
+                        <option>-keepdirectories javax.**</option>
+                    </options>
+
+                    <exclusions>
+                        <exclusion>
+                            <groupId>java</groupId>
+                            <artifactId>art1</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>org</groupId>
+                            <artifactId>art2</artifactId>
+                            <classifier>app</classifier>
+                        </exclusion>
+                    </exclusions>
                 </configuration>
+
+
             </plugin>
 
             <plugin>
