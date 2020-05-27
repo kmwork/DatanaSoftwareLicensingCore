@@ -48,6 +48,11 @@
                         <option>-dontwarn java.**</option>
                         <option>-dontwarn org.**</option>
                         <option>-dontwarn javax.**</option>
+<!--                        <option>-printseeds</option>-->
+                        <option>-keep class java.** { *; }</option>
+                        <option>-keep class javax.** { *; }</option>
+                        <option>-keep class org.** { *; }</option>
+
                     </options>
                 </configuration>
 
