@@ -29,35 +29,44 @@
                         </goals>
                     </execution>
                 </executions>
+
                 <configuration>
                     <obfuscate>true</obfuscate>
+                    <includeDependency>false</includeDependency>
                     <injar>${project.build.finalName}.jar</injar>
                     <outjar>${project.build.finalName}-small.jar</outjar>
                     <outputDirectory>${project.build.directory}</outputDirectory>
-                    <proguardInclude>${basedir}/proguard.conf</proguardInclude>
-                    <includeDependency>false</includeDependency>
-
+                    <maxMemory>256m</maxMemory>
+                    <libs>
+                        <!--  Java Runtime -->
+                        <lib>${java.home}/lib/jrt-fs.jar</lib>
+                    </libs>
                     <options>
-                        <option>-dontwarn org.**</option>
+                        <option>-allowaccessmodification</option>
+                        <option>-dontskipnonpubliclibraryclasses</option>
+                        <option>-dontskipnonpubliclibraryclassmembers</option>
                         <option>-dontwarn java.**</option>
+                        <option>-dontwarn org.**</option>
                         <option>-dontwarn javax.**</option>
-                        <option>-keepdirectories org.**</option>
-                        <option>-keepdirectories java.**</option>
-                        <option>-keepdirectories javax.**</option>
                     </options>
-
-                    <exclusions>
-                        <exclusion>
-                            <groupId>java</groupId>
-                            <artifactId>art1</artifactId>
-                        </exclusion>
-                        <exclusion>
-                            <groupId>org</groupId>
-                            <artifactId>art2</artifactId>
-                            <classifier>app</classifier>
-                        </exclusion>
-                    </exclusions>
                 </configuration>
+
+
+                <!--                <configuration>-->
+                <!--                    <obfuscate>true</obfuscate>-->
+                <!--                    <injar>${project.build.finalName}.jar</injar>-->
+                <!--                    <outjar>${project.build.finalName}-small.jar</outjar>-->
+                <!--                    <outputDirectory>${project.build.directory}</outputDirectory>-->
+                <!--&lt;!&ndash;                    <proguardInclude>${basedir}/proguard.conf</proguardInclude>&ndash;&gt;-->
+                <!--                    <includeDependency>false</includeDependency>-->
+
+                <!--                    <options>-->
+                <!--                        <option>-keep class java.**</option>-->
+                <!--                        <option>-keep class org.**</option>-->
+                <!--                        <option>-keep class javax.**</option>-->
+                <!--                    </options>-->
+
+                <!--                </configuration>-->
 
 
             </plugin>
