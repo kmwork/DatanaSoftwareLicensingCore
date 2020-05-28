@@ -44,10 +44,6 @@
                         <option>-keep class ru.datana.demo.license.MainApp</option>
                         <option>-dontoptimize</option>
                         <option>-dontshrink</option>
-                        <option>-dontusemixedcaseclassnames</option>
-                        <option>-dontskipnonpubliclibraryclasses</option>
-                        <option>-dontpreverify</option>
-                        <option>-verbose</option>
                     </options>
                 </configuration>
             </plugin>
