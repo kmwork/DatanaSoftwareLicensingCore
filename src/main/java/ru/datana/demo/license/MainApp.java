@@ -11,7 +11,11 @@ public class MainApp {
         System.out.println("Signer: " + Arrays.toString(clazz.getSigners()));
 
         DatanaWorker w = new DatanaWorker();
-        w.hello();
+        try {
+            w.hello();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         System.out.println("[Main:App] end");
     }
 }

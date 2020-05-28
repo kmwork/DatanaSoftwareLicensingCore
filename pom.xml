@@ -23,7 +23,7 @@
                 <version>2.2.0</version>
                 <executions>
                     <execution>
-                        <phase>verify</phase>
+                        <phase>package</phase>
                         <goals>
                             <goal>proguard</goal>
                         </goals>
