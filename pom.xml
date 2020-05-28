@@ -33,7 +33,7 @@
                 <configuration>
                     <obfuscate>true</obfuscate>
                     <injar>${project.build.finalName}.jar</injar>
-                    <outjar>${project.build.finalName}-small.jar</outjar>
+                    <outjar>${project.build.finalName}-proguard.jar</outjar>
                     <outputDirectory>${project.build.directory}</outputDirectory>
                     <maxMemory>256m</maxMemory>
                     <options>
@@ -66,15 +66,18 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jarsigner-plugin</artifactId>
                 <version>3.0.0</version>
+
                 <executions>
                     <execution>
-                        <id>sign</id>
+                        <phase>install</phase>
                         <goals>
                             <goal>sign</goal>
                         </goals>
                     </execution>
                 </executions>
                 <configuration>
+
+                    <archive>${project.basedir}/target/${project.build.finalName}-proguard.jar</archive>
                     <keystore>/home/lin/apps/bin-gen-ssl-keys/keystore-client-license.jks</keystore>
                     <alias>DatanaLicense</alias>
                     <storepass>12345678</storepass>
