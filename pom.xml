@@ -41,7 +41,7 @@
                         <option>-dontwarn org.**</option>
                         <option>-dontwarn javax.**</option>
                         <option>-keep class java.** { *; }</option>
-                        <option>-keep class ru.datana.demo.license.MainApp</option>
+                        <option>-keep class ru.datana.demo.license.MainApp { *; }</option>
                         <option>-dontoptimize</option>
                         <option>-dontshrink</option>
                     </options>
