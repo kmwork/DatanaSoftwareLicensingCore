@@ -110,11 +110,11 @@
                 <configuration>
                     <images>
                         <image>
-                            <name>imagenam</name>
-                            <alias>dockerfile</alias>
+                            <name>datanalicense:1</name>
+                            <alias>datana_docker</alias>
                             <build>
                                 <!-- filter>@</filter-->
-                                <dockerFileDir>/home/lin/apps/datana-docker-image</dockerFileDir>
+                                <dockerFileDir>~/apps/datana-docker-image</dockerFileDir>
                                 <tags>
                                     <tag>latest</tag>
                                     <tag>0.0.1</tag>
