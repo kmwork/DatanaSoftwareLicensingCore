@@ -114,7 +114,7 @@
                             <alias>dockerfile</alias>
                             <build>
                                 <!-- filter>@</filter-->
-                                <dockerFileDir>dockerfile loaction</dockerFileDir>
+                                <dockerFileDir>/home/lin/apps/datana-docker-image</dockerFileDir>
                                 <tags>
                                     <tag>latest</tag>
                                     <tag>0.0.1</tag>
