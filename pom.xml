@@ -16,9 +16,7 @@
 
         <!-- для докера окружение -->
         <dockerRegistry>http://nexus.dkp.lanit.ru:8081/repository/tools-license-libraries/kostya-docker</dockerRegistry>
-<!--        <docker.base.image>https://github.com/AdoptOpenJDK/openjdk11-upstream-binaries/releases/download/jdk-11.0.7%2B10/OpenJDK11U-jre_-->
-<!--        </docker.base.image>-->
-        <!--        <docker.base.image>${dockerRegistry}/fabric8-s2i-java:3.0.0-java11</docker.base.image>-->
+        <docker.base.image>https://hub.docker.com/layers/fabric8/s2i-java/latest-java11</docker.base.image>
         <!-- КОНЕЦ - для докера окружение -->
     </properties>
 
@@ -110,21 +108,32 @@
                 <configuration>
                     <images>
                         <image>
-                            <name>datanalicense:1</name>
-                            <alias>datana_docker</alias>
+                            <name>datana-kostya-docker:${project.version}-1</name>
+                            <alias>${project.artifactId}</alias>
                             <build>
-                                <!-- filter>@</filter-->
-                                <dockerFileDir>${user.home}/apps/datana-docker-image</dockerFileDir>
-                                <tags>
-                                    <tag>latest</tag>
-                                    <tag>0.0.1</tag>
-                                </tags>
-                            </build>
-                            <run>
+                                <from>${docker.base.image}</from>
+                                <assembly>
+                                    <basedir>/deployments</basedir>
+                                    <descriptor>artifact-with-includes.xml</descriptor>
+                                </assembly>
+                                <env>
+                                    <JAVA_APP_DIR>/deployments</JAVA_APP_DIR>
+                                    <JAVA_OPTIONS>-XshowSettings:vm -Duser.timezone=Europe/Moscow -Dfile.encoding=UTF-8</JAVA_OPTIONS>
+                                    <JAVA_MAX_MEM_RATIO>0</JAVA_MAX_MEM_RATIO>
+                                    <AB_JMX_EXPORTER_CONFIG>/deployments/prometheus-client-config.yml
+                                    </AB_JMX_EXPORTER_CONFIG>
+                                </env>
                                 <ports>
-                                    <port>8080:8080</port>
+                                    <!-- 8081 для диагностики на жизнеспособность -->
+                                    <port>8081</port>
+
+                                    <!-- 80 для findPerson - внешний сервис -->
+                                    <port>80</port>
+
+                                    <!-- 8443 точка входа в этот микросервис -->
+                                    <port>8443</port>
                                 </ports>
-                            </run>
+                            </build>
                         </image>
                     </images>
                 </configuration>
