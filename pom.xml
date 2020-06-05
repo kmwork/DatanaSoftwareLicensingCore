@@ -114,7 +114,7 @@
                             <alias>datana_docker</alias>
                             <build>
                                 <!-- filter>@</filter-->
-                                <dockerFileDir>~/apps/datana-docker-image</dockerFileDir>
+                                <dockerFileDir>${user.home}/apps/datana-docker-image</dockerFileDir>
                                 <tags>
                                     <tag>latest</tag>
                                     <tag>0.0.1</tag>
