@@ -16,7 +16,8 @@
 
         <!-- для докера окружение -->
         <dockerRegistry>http://nexus.dkp.lanit.ru:8081/repository/tools-license-libraries/kostya-docker</dockerRegistry>
-        <docker.base.image>https://hub.docker.com/layers/fabric8/s2i-java/latest-java11</docker.base.image>
+        <docker.base.image>fabric8/java-alpine-openjdk11-jdk</docker.base.image>
+
         <!-- КОНЕЦ - для докера окружение -->
     </properties>
 
@@ -103,8 +104,7 @@
 
             <plugin>
                 <groupId>io.fabric8</groupId>
-
-                <artifactId>docker-maven-plugin</artifactId>
+                <artifactId>fabric8-maven-plugin</artifactId>
                 <configuration>
                     <images>
                         <image>
