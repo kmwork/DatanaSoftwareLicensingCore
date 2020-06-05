@@ -8,6 +8,7 @@ public class MainApp {
     public static void main(String[] args) throws IOException {
         System.out.println("[Main:App] start");
         Class clazz = MainApp.class;
+        System.out.println(clazz.getProtectionDomain().getCodeSource().getCertificates()[0].getType());
         System.out.println("Signer: " + Arrays.toString(clazz.getSigners()));
 
         DatanaWorker w = new DatanaWorker();
